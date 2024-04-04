@@ -1,0 +1,25 @@
+class Constants {
+  static const List<String> messages = [
+    'Здравствуйте!',
+    'Добрый день, как ваше здоровье?',
+    'Не очень хорошо',
+    'Что случилось?',
+    'What\'s the problem bro?',
+    'What\'s the problem bro?',
+    'Спасибо',
+    'Здравствуйте!',
+    'Добрый день, как ваше здоровье?',
+    'Не очень хорошо',
+    'Что случилось?',
+    'What\'s the problem bro?',
+    'What\'s the problem bro?',
+    'Спасибо',
+    'Здравствуйте!',
+    'Добрый день, как ваше здоровье?',
+    'Не очень хорошо',
+    'Что случилось?',
+    'What\'s the problem bro?',
+    'What\'s the problem bro?',
+    'Спасибо',
+  ];
+}

@@ -1,0 +1,3 @@
+
+enum SwitchState { on, off }
+
