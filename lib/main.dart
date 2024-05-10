@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:camera/camera.dart';
 import 'package:careme24/dangerous_icons/bloc/forecast_bloc/forecast_bloc.dart';
+import 'package:careme24/mediacl_card/bloc/medical_card_bloc/medical_card_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:careme24/routes/app_routes.dart';
@@ -38,10 +39,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
-          create: (context) => sl<AuthBloc>(),
+          create: (context) => sl<AuthBloc>()..add(AuthEvent.hasToken()),
         ),
         BlocProvider<ForecastBloc>(
           create: (context) => sl<ForecastBloc>(),
+        ),
+        BlocProvider<MedicalCardBloc>(
+          create: (context) => sl<MedicalCardBloc>(),
         ),
       ],
       child: BlocListener<AuthBloc, AuthState>(

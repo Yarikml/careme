@@ -16,55 +16,50 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AuthState {
-  String? get number => throw _privateConstructorUsedError;
-  String? get code => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? number, String? code) initial,
-    required TResult Function(String number, String? code) acceptingNumber,
-    required TResult Function(String number, String? code) numberAccepted,
-    required TResult Function(String number, String code) numberVerification,
-    required TResult Function(String number, String code) numberVerified,
-    required TResult Function(
-            String number, String code, Placemark location, Position position)
-        authorized,
-    required TResult Function(String? number, String? code) notAuthorized,
-    required TResult Function(String? number, String? code, String message)
-        error,
+    required TResult Function() initial,
+    required TResult Function() noTokens,
+    required TResult Function(String number) acceptingNumber,
+    required TResult Function(String number) numberAccepted,
+    required TResult Function(String number) numberVerification,
+    required TResult Function(String number) numberVerified,
+    required TResult Function(Placemark location, Position position) authorized,
+    required TResult Function() notAuthorized,
+    required TResult Function(String? number, String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? number, String? code)? initial,
-    TResult? Function(String number, String? code)? acceptingNumber,
-    TResult? Function(String number, String? code)? numberAccepted,
-    TResult? Function(String number, String code)? numberVerification,
-    TResult? Function(String number, String code)? numberVerified,
-    TResult? Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult? Function(String? number, String? code)? notAuthorized,
-    TResult? Function(String? number, String? code, String message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? noTokens,
+    TResult? Function(String number)? acceptingNumber,
+    TResult? Function(String number)? numberAccepted,
+    TResult? Function(String number)? numberVerification,
+    TResult? Function(String number)? numberVerified,
+    TResult? Function(Placemark location, Position position)? authorized,
+    TResult? Function()? notAuthorized,
+    TResult? Function(String? number, String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? number, String? code)? initial,
-    TResult Function(String number, String? code)? acceptingNumber,
-    TResult Function(String number, String? code)? numberAccepted,
-    TResult Function(String number, String code)? numberVerification,
-    TResult Function(String number, String code)? numberVerified,
-    TResult Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult Function(String? number, String? code)? notAuthorized,
-    TResult Function(String? number, String? code, String message)? error,
+    TResult Function()? initial,
+    TResult Function()? noTokens,
+    TResult Function(String number)? acceptingNumber,
+    TResult Function(String number)? numberAccepted,
+    TResult Function(String number)? numberVerification,
+    TResult Function(String number)? numberVerified,
+    TResult Function(Placemark location, Position position)? authorized,
+    TResult Function()? notAuthorized,
+    TResult Function(String? number, String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthState value) initial,
+    required TResult Function(_NoTokensAuthState value) noTokens,
     required TResult Function(_AcceptingNumberAuthState value) acceptingNumber,
     required TResult Function(_NumberAcceptedAuthState value) numberAccepted,
     required TResult Function(_NumberVerificationAuthState value)
@@ -78,6 +73,7 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialAuthState value)? initial,
+    TResult? Function(_NoTokensAuthState value)? noTokens,
     TResult? Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult? Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult? Function(_NumberVerificationAuthState value)? numberVerification,
@@ -90,6 +86,7 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthState value)? initial,
+    TResult Function(_NoTokensAuthState value)? noTokens,
     TResult Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult Function(_NumberVerificationAuthState value)? numberVerification,
@@ -100,18 +97,12 @@ mixin _$AuthState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $AuthStateCopyWith<AuthState> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
-  @useResult
-  $Res call({String number, String code});
 }
 
 /// @nodoc
@@ -123,35 +114,13 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? number = null,
-    Object? code = null,
-  }) {
-    return _then(_value.copyWith(
-      number: null == number
-          ? _value.number!
-          : number // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
-          ? _value.code!
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$InitialAuthStateImplCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
+abstract class _$$InitialAuthStateImplCopyWith<$Res> {
   factory _$$InitialAuthStateImplCopyWith(_$InitialAuthStateImpl value,
           $Res Function(_$InitialAuthStateImpl) then) =
       __$$InitialAuthStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? number, String? code});
 }
 
 /// @nodoc
@@ -161,115 +130,75 @@ class __$$InitialAuthStateImplCopyWithImpl<$Res>
   __$$InitialAuthStateImplCopyWithImpl(_$InitialAuthStateImpl _value,
       $Res Function(_$InitialAuthStateImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? number = freezed,
-    Object? code = freezed,
-  }) {
-    return _then(_$InitialAuthStateImpl(
-      number: freezed == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$InitialAuthStateImpl extends _InitialAuthState {
-  const _$InitialAuthStateImpl({this.number = null, this.code = null})
-      : super._();
-
-  @override
-  @JsonKey()
-  final String? number;
-  @override
-  @JsonKey()
-  final String? code;
+  const _$InitialAuthStateImpl() : super._();
 
   @override
   String toString() {
-    return 'AuthState.initial(number: $number, code: $code)';
+    return 'AuthState.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$InitialAuthStateImpl &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.code, code) || other.code == code));
+        (other.runtimeType == runtimeType && other is _$InitialAuthStateImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, number, code);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$InitialAuthStateImplCopyWith<_$InitialAuthStateImpl> get copyWith =>
-      __$$InitialAuthStateImplCopyWithImpl<_$InitialAuthStateImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? number, String? code) initial,
-    required TResult Function(String number, String? code) acceptingNumber,
-    required TResult Function(String number, String? code) numberAccepted,
-    required TResult Function(String number, String code) numberVerification,
-    required TResult Function(String number, String code) numberVerified,
-    required TResult Function(
-            String number, String code, Placemark location, Position position)
-        authorized,
-    required TResult Function(String? number, String? code) notAuthorized,
-    required TResult Function(String? number, String? code, String message)
-        error,
+    required TResult Function() initial,
+    required TResult Function() noTokens,
+    required TResult Function(String number) acceptingNumber,
+    required TResult Function(String number) numberAccepted,
+    required TResult Function(String number) numberVerification,
+    required TResult Function(String number) numberVerified,
+    required TResult Function(Placemark location, Position position) authorized,
+    required TResult Function() notAuthorized,
+    required TResult Function(String? number, String message) error,
   }) {
-    return initial(number, code);
+    return initial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? number, String? code)? initial,
-    TResult? Function(String number, String? code)? acceptingNumber,
-    TResult? Function(String number, String? code)? numberAccepted,
-    TResult? Function(String number, String code)? numberVerification,
-    TResult? Function(String number, String code)? numberVerified,
-    TResult? Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult? Function(String? number, String? code)? notAuthorized,
-    TResult? Function(String? number, String? code, String message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? noTokens,
+    TResult? Function(String number)? acceptingNumber,
+    TResult? Function(String number)? numberAccepted,
+    TResult? Function(String number)? numberVerification,
+    TResult? Function(String number)? numberVerified,
+    TResult? Function(Placemark location, Position position)? authorized,
+    TResult? Function()? notAuthorized,
+    TResult? Function(String? number, String message)? error,
   }) {
-    return initial?.call(number, code);
+    return initial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? number, String? code)? initial,
-    TResult Function(String number, String? code)? acceptingNumber,
-    TResult Function(String number, String? code)? numberAccepted,
-    TResult Function(String number, String code)? numberVerification,
-    TResult Function(String number, String code)? numberVerified,
-    TResult Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult Function(String? number, String? code)? notAuthorized,
-    TResult Function(String? number, String? code, String message)? error,
+    TResult Function()? initial,
+    TResult Function()? noTokens,
+    TResult Function(String number)? acceptingNumber,
+    TResult Function(String number)? numberAccepted,
+    TResult Function(String number)? numberVerification,
+    TResult Function(String number)? numberVerified,
+    TResult Function(Placemark location, Position position)? authorized,
+    TResult Function()? notAuthorized,
+    TResult Function(String? number, String message)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(number, code);
+      return initial();
     }
     return orElse();
   }
@@ -278,6 +207,7 @@ class _$InitialAuthStateImpl extends _InitialAuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthState value) initial,
+    required TResult Function(_NoTokensAuthState value) noTokens,
     required TResult Function(_AcceptingNumberAuthState value) acceptingNumber,
     required TResult Function(_NumberAcceptedAuthState value) numberAccepted,
     required TResult Function(_NumberVerificationAuthState value)
@@ -294,6 +224,7 @@ class _$InitialAuthStateImpl extends _InitialAuthState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialAuthState value)? initial,
+    TResult? Function(_NoTokensAuthState value)? noTokens,
     TResult? Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult? Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult? Function(_NumberVerificationAuthState value)? numberVerification,
@@ -309,6 +240,7 @@ class _$InitialAuthStateImpl extends _InitialAuthState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthState value)? initial,
+    TResult Function(_NoTokensAuthState value)? noTokens,
     TResult Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult Function(_NumberVerificationAuthState value)? numberVerification,
@@ -326,30 +258,164 @@ class _$InitialAuthStateImpl extends _InitialAuthState {
 }
 
 abstract class _InitialAuthState extends AuthState {
-  const factory _InitialAuthState({final String? number, final String? code}) =
-      _$InitialAuthStateImpl;
+  const factory _InitialAuthState() = _$InitialAuthStateImpl;
   const _InitialAuthState._() : super._();
-
-  @override
-  String? get number;
-  @override
-  String? get code;
-  @override
-  @JsonKey(ignore: true)
-  _$$InitialAuthStateImplCopyWith<_$InitialAuthStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AcceptingNumberAuthStateImplCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
+abstract class _$$NoTokensAuthStateImplCopyWith<$Res> {
+  factory _$$NoTokensAuthStateImplCopyWith(_$NoTokensAuthStateImpl value,
+          $Res Function(_$NoTokensAuthStateImpl) then) =
+      __$$NoTokensAuthStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoTokensAuthStateImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$NoTokensAuthStateImpl>
+    implements _$$NoTokensAuthStateImplCopyWith<$Res> {
+  __$$NoTokensAuthStateImplCopyWithImpl(_$NoTokensAuthStateImpl _value,
+      $Res Function(_$NoTokensAuthStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NoTokensAuthStateImpl extends _NoTokensAuthState {
+  const _$NoTokensAuthStateImpl() : super._();
+
+  @override
+  String toString() {
+    return 'AuthState.noTokens()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NoTokensAuthStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() noTokens,
+    required TResult Function(String number) acceptingNumber,
+    required TResult Function(String number) numberAccepted,
+    required TResult Function(String number) numberVerification,
+    required TResult Function(String number) numberVerified,
+    required TResult Function(Placemark location, Position position) authorized,
+    required TResult Function() notAuthorized,
+    required TResult Function(String? number, String message) error,
+  }) {
+    return noTokens();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? noTokens,
+    TResult? Function(String number)? acceptingNumber,
+    TResult? Function(String number)? numberAccepted,
+    TResult? Function(String number)? numberVerification,
+    TResult? Function(String number)? numberVerified,
+    TResult? Function(Placemark location, Position position)? authorized,
+    TResult? Function()? notAuthorized,
+    TResult? Function(String? number, String message)? error,
+  }) {
+    return noTokens?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? noTokens,
+    TResult Function(String number)? acceptingNumber,
+    TResult Function(String number)? numberAccepted,
+    TResult Function(String number)? numberVerification,
+    TResult Function(String number)? numberVerified,
+    TResult Function(Placemark location, Position position)? authorized,
+    TResult Function()? notAuthorized,
+    TResult Function(String? number, String message)? error,
+    required TResult orElse(),
+  }) {
+    if (noTokens != null) {
+      return noTokens();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialAuthState value) initial,
+    required TResult Function(_NoTokensAuthState value) noTokens,
+    required TResult Function(_AcceptingNumberAuthState value) acceptingNumber,
+    required TResult Function(_NumberAcceptedAuthState value) numberAccepted,
+    required TResult Function(_NumberVerificationAuthState value)
+        numberVerification,
+    required TResult Function(_NumberVerifiedAuthState value) numberVerified,
+    required TResult Function(_AuthorizedAuthState value) authorized,
+    required TResult Function(_NotAuthorizedAuthState value) notAuthorized,
+    required TResult Function(_ErrorAuthState value) error,
+  }) {
+    return noTokens(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialAuthState value)? initial,
+    TResult? Function(_NoTokensAuthState value)? noTokens,
+    TResult? Function(_AcceptingNumberAuthState value)? acceptingNumber,
+    TResult? Function(_NumberAcceptedAuthState value)? numberAccepted,
+    TResult? Function(_NumberVerificationAuthState value)? numberVerification,
+    TResult? Function(_NumberVerifiedAuthState value)? numberVerified,
+    TResult? Function(_AuthorizedAuthState value)? authorized,
+    TResult? Function(_NotAuthorizedAuthState value)? notAuthorized,
+    TResult? Function(_ErrorAuthState value)? error,
+  }) {
+    return noTokens?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialAuthState value)? initial,
+    TResult Function(_NoTokensAuthState value)? noTokens,
+    TResult Function(_AcceptingNumberAuthState value)? acceptingNumber,
+    TResult Function(_NumberAcceptedAuthState value)? numberAccepted,
+    TResult Function(_NumberVerificationAuthState value)? numberVerification,
+    TResult Function(_NumberVerifiedAuthState value)? numberVerified,
+    TResult Function(_AuthorizedAuthState value)? authorized,
+    TResult Function(_NotAuthorizedAuthState value)? notAuthorized,
+    TResult Function(_ErrorAuthState value)? error,
+    required TResult orElse(),
+  }) {
+    if (noTokens != null) {
+      return noTokens(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoTokensAuthState extends AuthState {
+  const factory _NoTokensAuthState() = _$NoTokensAuthStateImpl;
+  const _NoTokensAuthState._() : super._();
+}
+
+/// @nodoc
+abstract class _$$AcceptingNumberAuthStateImplCopyWith<$Res> {
   factory _$$AcceptingNumberAuthStateImplCopyWith(
           _$AcceptingNumberAuthStateImpl value,
           $Res Function(_$AcceptingNumberAuthStateImpl) then) =
       __$$AcceptingNumberAuthStateImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({String number, String? code});
+  $Res call({String number});
 }
 
 /// @nodoc
@@ -365,17 +431,12 @@ class __$$AcceptingNumberAuthStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? number = null,
-    Object? code = freezed,
   }) {
     return _then(_$AcceptingNumberAuthStateImpl(
       number: null == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -383,18 +444,14 @@ class __$$AcceptingNumberAuthStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AcceptingNumberAuthStateImpl extends _AcceptingNumberAuthState {
-  const _$AcceptingNumberAuthStateImpl(
-      {required this.number, required this.code})
-      : super._();
+  const _$AcceptingNumberAuthStateImpl({required this.number}) : super._();
 
   @override
   final String number;
-  @override
-  final String? code;
 
   @override
   String toString() {
-    return 'AuthState.acceptingNumber(number: $number, code: $code)';
+    return 'AuthState.acceptingNumber(number: $number)';
   }
 
   @override
@@ -402,12 +459,11 @@ class _$AcceptingNumberAuthStateImpl extends _AcceptingNumberAuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AcceptingNumberAuthStateImpl &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.number, number) || other.number == number));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, number, code);
+  int get hashCode => Object.hash(runtimeType, number);
 
   @JsonKey(ignore: true)
   @override
@@ -419,55 +475,51 @@ class _$AcceptingNumberAuthStateImpl extends _AcceptingNumberAuthState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? number, String? code) initial,
-    required TResult Function(String number, String? code) acceptingNumber,
-    required TResult Function(String number, String? code) numberAccepted,
-    required TResult Function(String number, String code) numberVerification,
-    required TResult Function(String number, String code) numberVerified,
-    required TResult Function(
-            String number, String code, Placemark location, Position position)
-        authorized,
-    required TResult Function(String? number, String? code) notAuthorized,
-    required TResult Function(String? number, String? code, String message)
-        error,
+    required TResult Function() initial,
+    required TResult Function() noTokens,
+    required TResult Function(String number) acceptingNumber,
+    required TResult Function(String number) numberAccepted,
+    required TResult Function(String number) numberVerification,
+    required TResult Function(String number) numberVerified,
+    required TResult Function(Placemark location, Position position) authorized,
+    required TResult Function() notAuthorized,
+    required TResult Function(String? number, String message) error,
   }) {
-    return acceptingNumber(number, code);
+    return acceptingNumber(number);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? number, String? code)? initial,
-    TResult? Function(String number, String? code)? acceptingNumber,
-    TResult? Function(String number, String? code)? numberAccepted,
-    TResult? Function(String number, String code)? numberVerification,
-    TResult? Function(String number, String code)? numberVerified,
-    TResult? Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult? Function(String? number, String? code)? notAuthorized,
-    TResult? Function(String? number, String? code, String message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? noTokens,
+    TResult? Function(String number)? acceptingNumber,
+    TResult? Function(String number)? numberAccepted,
+    TResult? Function(String number)? numberVerification,
+    TResult? Function(String number)? numberVerified,
+    TResult? Function(Placemark location, Position position)? authorized,
+    TResult? Function()? notAuthorized,
+    TResult? Function(String? number, String message)? error,
   }) {
-    return acceptingNumber?.call(number, code);
+    return acceptingNumber?.call(number);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? number, String? code)? initial,
-    TResult Function(String number, String? code)? acceptingNumber,
-    TResult Function(String number, String? code)? numberAccepted,
-    TResult Function(String number, String code)? numberVerification,
-    TResult Function(String number, String code)? numberVerified,
-    TResult Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult Function(String? number, String? code)? notAuthorized,
-    TResult Function(String? number, String? code, String message)? error,
+    TResult Function()? initial,
+    TResult Function()? noTokens,
+    TResult Function(String number)? acceptingNumber,
+    TResult Function(String number)? numberAccepted,
+    TResult Function(String number)? numberVerification,
+    TResult Function(String number)? numberVerified,
+    TResult Function(Placemark location, Position position)? authorized,
+    TResult Function()? notAuthorized,
+    TResult Function(String? number, String message)? error,
     required TResult orElse(),
   }) {
     if (acceptingNumber != null) {
-      return acceptingNumber(number, code);
+      return acceptingNumber(number);
     }
     return orElse();
   }
@@ -476,6 +528,7 @@ class _$AcceptingNumberAuthStateImpl extends _AcceptingNumberAuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthState value) initial,
+    required TResult Function(_NoTokensAuthState value) noTokens,
     required TResult Function(_AcceptingNumberAuthState value) acceptingNumber,
     required TResult Function(_NumberAcceptedAuthState value) numberAccepted,
     required TResult Function(_NumberVerificationAuthState value)
@@ -492,6 +545,7 @@ class _$AcceptingNumberAuthStateImpl extends _AcceptingNumberAuthState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialAuthState value)? initial,
+    TResult? Function(_NoTokensAuthState value)? noTokens,
     TResult? Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult? Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult? Function(_NumberVerificationAuthState value)? numberVerification,
@@ -507,6 +561,7 @@ class _$AcceptingNumberAuthStateImpl extends _AcceptingNumberAuthState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthState value)? initial,
+    TResult Function(_NoTokensAuthState value)? noTokens,
     TResult Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult Function(_NumberVerificationAuthState value)? numberVerification,
@@ -524,31 +579,24 @@ class _$AcceptingNumberAuthStateImpl extends _AcceptingNumberAuthState {
 }
 
 abstract class _AcceptingNumberAuthState extends AuthState {
-  const factory _AcceptingNumberAuthState(
-      {required final String number,
-      required final String? code}) = _$AcceptingNumberAuthStateImpl;
+  const factory _AcceptingNumberAuthState({required final String number}) =
+      _$AcceptingNumberAuthStateImpl;
   const _AcceptingNumberAuthState._() : super._();
 
-  @override
   String get number;
-  @override
-  String? get code;
-  @override
   @JsonKey(ignore: true)
   _$$AcceptingNumberAuthStateImplCopyWith<_$AcceptingNumberAuthStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NumberAcceptedAuthStateImplCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
+abstract class _$$NumberAcceptedAuthStateImplCopyWith<$Res> {
   factory _$$NumberAcceptedAuthStateImplCopyWith(
           _$NumberAcceptedAuthStateImpl value,
           $Res Function(_$NumberAcceptedAuthStateImpl) then) =
       __$$NumberAcceptedAuthStateImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({String number, String? code});
+  $Res call({String number});
 }
 
 /// @nodoc
@@ -564,17 +612,12 @@ class __$$NumberAcceptedAuthStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? number = null,
-    Object? code = freezed,
   }) {
     return _then(_$NumberAcceptedAuthStateImpl(
       number: null == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -582,18 +625,14 @@ class __$$NumberAcceptedAuthStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NumberAcceptedAuthStateImpl extends _NumberAcceptedAuthState {
-  const _$NumberAcceptedAuthStateImpl(
-      {required this.number, required this.code})
-      : super._();
+  const _$NumberAcceptedAuthStateImpl({required this.number}) : super._();
 
   @override
   final String number;
-  @override
-  final String? code;
 
   @override
   String toString() {
-    return 'AuthState.numberAccepted(number: $number, code: $code)';
+    return 'AuthState.numberAccepted(number: $number)';
   }
 
   @override
@@ -601,12 +640,11 @@ class _$NumberAcceptedAuthStateImpl extends _NumberAcceptedAuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NumberAcceptedAuthStateImpl &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.number, number) || other.number == number));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, number, code);
+  int get hashCode => Object.hash(runtimeType, number);
 
   @JsonKey(ignore: true)
   @override
@@ -618,55 +656,51 @@ class _$NumberAcceptedAuthStateImpl extends _NumberAcceptedAuthState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? number, String? code) initial,
-    required TResult Function(String number, String? code) acceptingNumber,
-    required TResult Function(String number, String? code) numberAccepted,
-    required TResult Function(String number, String code) numberVerification,
-    required TResult Function(String number, String code) numberVerified,
-    required TResult Function(
-            String number, String code, Placemark location, Position position)
-        authorized,
-    required TResult Function(String? number, String? code) notAuthorized,
-    required TResult Function(String? number, String? code, String message)
-        error,
+    required TResult Function() initial,
+    required TResult Function() noTokens,
+    required TResult Function(String number) acceptingNumber,
+    required TResult Function(String number) numberAccepted,
+    required TResult Function(String number) numberVerification,
+    required TResult Function(String number) numberVerified,
+    required TResult Function(Placemark location, Position position) authorized,
+    required TResult Function() notAuthorized,
+    required TResult Function(String? number, String message) error,
   }) {
-    return numberAccepted(number, code);
+    return numberAccepted(number);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? number, String? code)? initial,
-    TResult? Function(String number, String? code)? acceptingNumber,
-    TResult? Function(String number, String? code)? numberAccepted,
-    TResult? Function(String number, String code)? numberVerification,
-    TResult? Function(String number, String code)? numberVerified,
-    TResult? Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult? Function(String? number, String? code)? notAuthorized,
-    TResult? Function(String? number, String? code, String message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? noTokens,
+    TResult? Function(String number)? acceptingNumber,
+    TResult? Function(String number)? numberAccepted,
+    TResult? Function(String number)? numberVerification,
+    TResult? Function(String number)? numberVerified,
+    TResult? Function(Placemark location, Position position)? authorized,
+    TResult? Function()? notAuthorized,
+    TResult? Function(String? number, String message)? error,
   }) {
-    return numberAccepted?.call(number, code);
+    return numberAccepted?.call(number);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? number, String? code)? initial,
-    TResult Function(String number, String? code)? acceptingNumber,
-    TResult Function(String number, String? code)? numberAccepted,
-    TResult Function(String number, String code)? numberVerification,
-    TResult Function(String number, String code)? numberVerified,
-    TResult Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult Function(String? number, String? code)? notAuthorized,
-    TResult Function(String? number, String? code, String message)? error,
+    TResult Function()? initial,
+    TResult Function()? noTokens,
+    TResult Function(String number)? acceptingNumber,
+    TResult Function(String number)? numberAccepted,
+    TResult Function(String number)? numberVerification,
+    TResult Function(String number)? numberVerified,
+    TResult Function(Placemark location, Position position)? authorized,
+    TResult Function()? notAuthorized,
+    TResult Function(String? number, String message)? error,
     required TResult orElse(),
   }) {
     if (numberAccepted != null) {
-      return numberAccepted(number, code);
+      return numberAccepted(number);
     }
     return orElse();
   }
@@ -675,6 +709,7 @@ class _$NumberAcceptedAuthStateImpl extends _NumberAcceptedAuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthState value) initial,
+    required TResult Function(_NoTokensAuthState value) noTokens,
     required TResult Function(_AcceptingNumberAuthState value) acceptingNumber,
     required TResult Function(_NumberAcceptedAuthState value) numberAccepted,
     required TResult Function(_NumberVerificationAuthState value)
@@ -691,6 +726,7 @@ class _$NumberAcceptedAuthStateImpl extends _NumberAcceptedAuthState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialAuthState value)? initial,
+    TResult? Function(_NoTokensAuthState value)? noTokens,
     TResult? Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult? Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult? Function(_NumberVerificationAuthState value)? numberVerification,
@@ -706,6 +742,7 @@ class _$NumberAcceptedAuthStateImpl extends _NumberAcceptedAuthState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthState value)? initial,
+    TResult Function(_NoTokensAuthState value)? noTokens,
     TResult Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult Function(_NumberVerificationAuthState value)? numberVerification,
@@ -723,31 +760,24 @@ class _$NumberAcceptedAuthStateImpl extends _NumberAcceptedAuthState {
 }
 
 abstract class _NumberAcceptedAuthState extends AuthState {
-  const factory _NumberAcceptedAuthState(
-      {required final String number,
-      required final String? code}) = _$NumberAcceptedAuthStateImpl;
+  const factory _NumberAcceptedAuthState({required final String number}) =
+      _$NumberAcceptedAuthStateImpl;
   const _NumberAcceptedAuthState._() : super._();
 
-  @override
   String get number;
-  @override
-  String? get code;
-  @override
   @JsonKey(ignore: true)
   _$$NumberAcceptedAuthStateImplCopyWith<_$NumberAcceptedAuthStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NumberVerificationAuthStateImplCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
+abstract class _$$NumberVerificationAuthStateImplCopyWith<$Res> {
   factory _$$NumberVerificationAuthStateImplCopyWith(
           _$NumberVerificationAuthStateImpl value,
           $Res Function(_$NumberVerificationAuthStateImpl) then) =
       __$$NumberVerificationAuthStateImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({String number, String code});
+  $Res call({String number});
 }
 
 /// @nodoc
@@ -763,16 +793,11 @@ class __$$NumberVerificationAuthStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? number = null,
-    Object? code = null,
   }) {
     return _then(_$NumberVerificationAuthStateImpl(
       number: null == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -781,18 +806,14 @@ class __$$NumberVerificationAuthStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NumberVerificationAuthStateImpl extends _NumberVerificationAuthState {
-  const _$NumberVerificationAuthStateImpl(
-      {required this.number, required this.code})
-      : super._();
+  const _$NumberVerificationAuthStateImpl({required this.number}) : super._();
 
   @override
   final String number;
-  @override
-  final String code;
 
   @override
   String toString() {
-    return 'AuthState.numberVerification(number: $number, code: $code)';
+    return 'AuthState.numberVerification(number: $number)';
   }
 
   @override
@@ -800,12 +821,11 @@ class _$NumberVerificationAuthStateImpl extends _NumberVerificationAuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NumberVerificationAuthStateImpl &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.number, number) || other.number == number));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, number, code);
+  int get hashCode => Object.hash(runtimeType, number);
 
   @JsonKey(ignore: true)
   @override
@@ -817,55 +837,51 @@ class _$NumberVerificationAuthStateImpl extends _NumberVerificationAuthState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? number, String? code) initial,
-    required TResult Function(String number, String? code) acceptingNumber,
-    required TResult Function(String number, String? code) numberAccepted,
-    required TResult Function(String number, String code) numberVerification,
-    required TResult Function(String number, String code) numberVerified,
-    required TResult Function(
-            String number, String code, Placemark location, Position position)
-        authorized,
-    required TResult Function(String? number, String? code) notAuthorized,
-    required TResult Function(String? number, String? code, String message)
-        error,
+    required TResult Function() initial,
+    required TResult Function() noTokens,
+    required TResult Function(String number) acceptingNumber,
+    required TResult Function(String number) numberAccepted,
+    required TResult Function(String number) numberVerification,
+    required TResult Function(String number) numberVerified,
+    required TResult Function(Placemark location, Position position) authorized,
+    required TResult Function() notAuthorized,
+    required TResult Function(String? number, String message) error,
   }) {
-    return numberVerification(number, code);
+    return numberVerification(number);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? number, String? code)? initial,
-    TResult? Function(String number, String? code)? acceptingNumber,
-    TResult? Function(String number, String? code)? numberAccepted,
-    TResult? Function(String number, String code)? numberVerification,
-    TResult? Function(String number, String code)? numberVerified,
-    TResult? Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult? Function(String? number, String? code)? notAuthorized,
-    TResult? Function(String? number, String? code, String message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? noTokens,
+    TResult? Function(String number)? acceptingNumber,
+    TResult? Function(String number)? numberAccepted,
+    TResult? Function(String number)? numberVerification,
+    TResult? Function(String number)? numberVerified,
+    TResult? Function(Placemark location, Position position)? authorized,
+    TResult? Function()? notAuthorized,
+    TResult? Function(String? number, String message)? error,
   }) {
-    return numberVerification?.call(number, code);
+    return numberVerification?.call(number);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? number, String? code)? initial,
-    TResult Function(String number, String? code)? acceptingNumber,
-    TResult Function(String number, String? code)? numberAccepted,
-    TResult Function(String number, String code)? numberVerification,
-    TResult Function(String number, String code)? numberVerified,
-    TResult Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult Function(String? number, String? code)? notAuthorized,
-    TResult Function(String? number, String? code, String message)? error,
+    TResult Function()? initial,
+    TResult Function()? noTokens,
+    TResult Function(String number)? acceptingNumber,
+    TResult Function(String number)? numberAccepted,
+    TResult Function(String number)? numberVerification,
+    TResult Function(String number)? numberVerified,
+    TResult Function(Placemark location, Position position)? authorized,
+    TResult Function()? notAuthorized,
+    TResult Function(String? number, String message)? error,
     required TResult orElse(),
   }) {
     if (numberVerification != null) {
-      return numberVerification(number, code);
+      return numberVerification(number);
     }
     return orElse();
   }
@@ -874,6 +890,7 @@ class _$NumberVerificationAuthStateImpl extends _NumberVerificationAuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthState value) initial,
+    required TResult Function(_NoTokensAuthState value) noTokens,
     required TResult Function(_AcceptingNumberAuthState value) acceptingNumber,
     required TResult Function(_NumberAcceptedAuthState value) numberAccepted,
     required TResult Function(_NumberVerificationAuthState value)
@@ -890,6 +907,7 @@ class _$NumberVerificationAuthStateImpl extends _NumberVerificationAuthState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialAuthState value)? initial,
+    TResult? Function(_NoTokensAuthState value)? noTokens,
     TResult? Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult? Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult? Function(_NumberVerificationAuthState value)? numberVerification,
@@ -905,6 +923,7 @@ class _$NumberVerificationAuthStateImpl extends _NumberVerificationAuthState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthState value)? initial,
+    TResult Function(_NoTokensAuthState value)? noTokens,
     TResult Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult Function(_NumberVerificationAuthState value)? numberVerification,
@@ -922,31 +941,24 @@ class _$NumberVerificationAuthStateImpl extends _NumberVerificationAuthState {
 }
 
 abstract class _NumberVerificationAuthState extends AuthState {
-  const factory _NumberVerificationAuthState(
-      {required final String number,
-      required final String code}) = _$NumberVerificationAuthStateImpl;
+  const factory _NumberVerificationAuthState({required final String number}) =
+      _$NumberVerificationAuthStateImpl;
   const _NumberVerificationAuthState._() : super._();
 
-  @override
   String get number;
-  @override
-  String get code;
-  @override
   @JsonKey(ignore: true)
   _$$NumberVerificationAuthStateImplCopyWith<_$NumberVerificationAuthStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NumberVerifiedAuthStateImplCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
+abstract class _$$NumberVerifiedAuthStateImplCopyWith<$Res> {
   factory _$$NumberVerifiedAuthStateImplCopyWith(
           _$NumberVerifiedAuthStateImpl value,
           $Res Function(_$NumberVerifiedAuthStateImpl) then) =
       __$$NumberVerifiedAuthStateImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({String number, String code});
+  $Res call({String number});
 }
 
 /// @nodoc
@@ -962,16 +974,11 @@ class __$$NumberVerifiedAuthStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? number = null,
-    Object? code = null,
   }) {
     return _then(_$NumberVerifiedAuthStateImpl(
       number: null == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -980,18 +987,14 @@ class __$$NumberVerifiedAuthStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NumberVerifiedAuthStateImpl extends _NumberVerifiedAuthState {
-  const _$NumberVerifiedAuthStateImpl(
-      {required this.number, required this.code})
-      : super._();
+  const _$NumberVerifiedAuthStateImpl({required this.number}) : super._();
 
   @override
   final String number;
-  @override
-  final String code;
 
   @override
   String toString() {
-    return 'AuthState.numberVerified(number: $number, code: $code)';
+    return 'AuthState.numberVerified(number: $number)';
   }
 
   @override
@@ -999,12 +1002,11 @@ class _$NumberVerifiedAuthStateImpl extends _NumberVerifiedAuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NumberVerifiedAuthStateImpl &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.number, number) || other.number == number));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, number, code);
+  int get hashCode => Object.hash(runtimeType, number);
 
   @JsonKey(ignore: true)
   @override
@@ -1016,55 +1018,51 @@ class _$NumberVerifiedAuthStateImpl extends _NumberVerifiedAuthState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? number, String? code) initial,
-    required TResult Function(String number, String? code) acceptingNumber,
-    required TResult Function(String number, String? code) numberAccepted,
-    required TResult Function(String number, String code) numberVerification,
-    required TResult Function(String number, String code) numberVerified,
-    required TResult Function(
-            String number, String code, Placemark location, Position position)
-        authorized,
-    required TResult Function(String? number, String? code) notAuthorized,
-    required TResult Function(String? number, String? code, String message)
-        error,
+    required TResult Function() initial,
+    required TResult Function() noTokens,
+    required TResult Function(String number) acceptingNumber,
+    required TResult Function(String number) numberAccepted,
+    required TResult Function(String number) numberVerification,
+    required TResult Function(String number) numberVerified,
+    required TResult Function(Placemark location, Position position) authorized,
+    required TResult Function() notAuthorized,
+    required TResult Function(String? number, String message) error,
   }) {
-    return numberVerified(number, code);
+    return numberVerified(number);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? number, String? code)? initial,
-    TResult? Function(String number, String? code)? acceptingNumber,
-    TResult? Function(String number, String? code)? numberAccepted,
-    TResult? Function(String number, String code)? numberVerification,
-    TResult? Function(String number, String code)? numberVerified,
-    TResult? Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult? Function(String? number, String? code)? notAuthorized,
-    TResult? Function(String? number, String? code, String message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? noTokens,
+    TResult? Function(String number)? acceptingNumber,
+    TResult? Function(String number)? numberAccepted,
+    TResult? Function(String number)? numberVerification,
+    TResult? Function(String number)? numberVerified,
+    TResult? Function(Placemark location, Position position)? authorized,
+    TResult? Function()? notAuthorized,
+    TResult? Function(String? number, String message)? error,
   }) {
-    return numberVerified?.call(number, code);
+    return numberVerified?.call(number);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? number, String? code)? initial,
-    TResult Function(String number, String? code)? acceptingNumber,
-    TResult Function(String number, String? code)? numberAccepted,
-    TResult Function(String number, String code)? numberVerification,
-    TResult Function(String number, String code)? numberVerified,
-    TResult Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult Function(String? number, String? code)? notAuthorized,
-    TResult Function(String? number, String? code, String message)? error,
+    TResult Function()? initial,
+    TResult Function()? noTokens,
+    TResult Function(String number)? acceptingNumber,
+    TResult Function(String number)? numberAccepted,
+    TResult Function(String number)? numberVerification,
+    TResult Function(String number)? numberVerified,
+    TResult Function(Placemark location, Position position)? authorized,
+    TResult Function()? notAuthorized,
+    TResult Function(String? number, String message)? error,
     required TResult orElse(),
   }) {
     if (numberVerified != null) {
-      return numberVerified(number, code);
+      return numberVerified(number);
     }
     return orElse();
   }
@@ -1073,6 +1071,7 @@ class _$NumberVerifiedAuthStateImpl extends _NumberVerifiedAuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthState value) initial,
+    required TResult Function(_NoTokensAuthState value) noTokens,
     required TResult Function(_AcceptingNumberAuthState value) acceptingNumber,
     required TResult Function(_NumberAcceptedAuthState value) numberAccepted,
     required TResult Function(_NumberVerificationAuthState value)
@@ -1089,6 +1088,7 @@ class _$NumberVerifiedAuthStateImpl extends _NumberVerifiedAuthState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialAuthState value)? initial,
+    TResult? Function(_NoTokensAuthState value)? noTokens,
     TResult? Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult? Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult? Function(_NumberVerificationAuthState value)? numberVerification,
@@ -1104,6 +1104,7 @@ class _$NumberVerifiedAuthStateImpl extends _NumberVerifiedAuthState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthState value)? initial,
+    TResult Function(_NoTokensAuthState value)? noTokens,
     TResult Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult Function(_NumberVerificationAuthState value)? numberVerification,
@@ -1121,31 +1122,23 @@ class _$NumberVerifiedAuthStateImpl extends _NumberVerifiedAuthState {
 }
 
 abstract class _NumberVerifiedAuthState extends AuthState {
-  const factory _NumberVerifiedAuthState(
-      {required final String number,
-      required final String code}) = _$NumberVerifiedAuthStateImpl;
+  const factory _NumberVerifiedAuthState({required final String number}) =
+      _$NumberVerifiedAuthStateImpl;
   const _NumberVerifiedAuthState._() : super._();
 
-  @override
   String get number;
-  @override
-  String get code;
-  @override
   @JsonKey(ignore: true)
   _$$NumberVerifiedAuthStateImplCopyWith<_$NumberVerifiedAuthStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AuthorizedAuthStateImplCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
+abstract class _$$AuthorizedAuthStateImplCopyWith<$Res> {
   factory _$$AuthorizedAuthStateImplCopyWith(_$AuthorizedAuthStateImpl value,
           $Res Function(_$AuthorizedAuthStateImpl) then) =
       __$$AuthorizedAuthStateImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call(
-      {String number, String code, Placemark location, Position position});
+  $Res call({Placemark location, Position position});
 }
 
 /// @nodoc
@@ -1159,20 +1152,10 @@ class __$$AuthorizedAuthStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? number = null,
-    Object? code = null,
     Object? location = null,
     Object? position = null,
   }) {
     return _then(_$AuthorizedAuthStateImpl(
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -1189,16 +1172,9 @@ class __$$AuthorizedAuthStateImplCopyWithImpl<$Res>
 
 class _$AuthorizedAuthStateImpl extends _AuthorizedAuthState {
   const _$AuthorizedAuthStateImpl(
-      {required this.number,
-      required this.code,
-      required this.location,
-      required this.position})
+      {required this.location, required this.position})
       : super._();
 
-  @override
-  final String number;
-  @override
-  final String code;
   @override
   final Placemark location;
   @override
@@ -1206,7 +1182,7 @@ class _$AuthorizedAuthStateImpl extends _AuthorizedAuthState {
 
   @override
   String toString() {
-    return 'AuthState.authorized(number: $number, code: $code, location: $location, position: $position)';
+    return 'AuthState.authorized(location: $location, position: $position)';
   }
 
   @override
@@ -1214,8 +1190,6 @@ class _$AuthorizedAuthStateImpl extends _AuthorizedAuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthorizedAuthStateImpl &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.code, code) || other.code == code) &&
             (identical(other.location, location) ||
                 other.location == location) &&
             (identical(other.position, position) ||
@@ -1223,8 +1197,7 @@ class _$AuthorizedAuthStateImpl extends _AuthorizedAuthState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, number, code, location, position);
+  int get hashCode => Object.hash(runtimeType, location, position);
 
   @JsonKey(ignore: true)
   @override
@@ -1236,55 +1209,51 @@ class _$AuthorizedAuthStateImpl extends _AuthorizedAuthState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? number, String? code) initial,
-    required TResult Function(String number, String? code) acceptingNumber,
-    required TResult Function(String number, String? code) numberAccepted,
-    required TResult Function(String number, String code) numberVerification,
-    required TResult Function(String number, String code) numberVerified,
-    required TResult Function(
-            String number, String code, Placemark location, Position position)
-        authorized,
-    required TResult Function(String? number, String? code) notAuthorized,
-    required TResult Function(String? number, String? code, String message)
-        error,
+    required TResult Function() initial,
+    required TResult Function() noTokens,
+    required TResult Function(String number) acceptingNumber,
+    required TResult Function(String number) numberAccepted,
+    required TResult Function(String number) numberVerification,
+    required TResult Function(String number) numberVerified,
+    required TResult Function(Placemark location, Position position) authorized,
+    required TResult Function() notAuthorized,
+    required TResult Function(String? number, String message) error,
   }) {
-    return authorized(number, code, location, position);
+    return authorized(location, position);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? number, String? code)? initial,
-    TResult? Function(String number, String? code)? acceptingNumber,
-    TResult? Function(String number, String? code)? numberAccepted,
-    TResult? Function(String number, String code)? numberVerification,
-    TResult? Function(String number, String code)? numberVerified,
-    TResult? Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult? Function(String? number, String? code)? notAuthorized,
-    TResult? Function(String? number, String? code, String message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? noTokens,
+    TResult? Function(String number)? acceptingNumber,
+    TResult? Function(String number)? numberAccepted,
+    TResult? Function(String number)? numberVerification,
+    TResult? Function(String number)? numberVerified,
+    TResult? Function(Placemark location, Position position)? authorized,
+    TResult? Function()? notAuthorized,
+    TResult? Function(String? number, String message)? error,
   }) {
-    return authorized?.call(number, code, location, position);
+    return authorized?.call(location, position);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? number, String? code)? initial,
-    TResult Function(String number, String? code)? acceptingNumber,
-    TResult Function(String number, String? code)? numberAccepted,
-    TResult Function(String number, String code)? numberVerification,
-    TResult Function(String number, String code)? numberVerified,
-    TResult Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult Function(String? number, String? code)? notAuthorized,
-    TResult Function(String? number, String? code, String message)? error,
+    TResult Function()? initial,
+    TResult Function()? noTokens,
+    TResult Function(String number)? acceptingNumber,
+    TResult Function(String number)? numberAccepted,
+    TResult Function(String number)? numberVerification,
+    TResult Function(String number)? numberVerified,
+    TResult Function(Placemark location, Position position)? authorized,
+    TResult Function()? notAuthorized,
+    TResult Function(String? number, String message)? error,
     required TResult orElse(),
   }) {
     if (authorized != null) {
-      return authorized(number, code, location, position);
+      return authorized(location, position);
     }
     return orElse();
   }
@@ -1293,6 +1262,7 @@ class _$AuthorizedAuthStateImpl extends _AuthorizedAuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthState value) initial,
+    required TResult Function(_NoTokensAuthState value) noTokens,
     required TResult Function(_AcceptingNumberAuthState value) acceptingNumber,
     required TResult Function(_NumberAcceptedAuthState value) numberAccepted,
     required TResult Function(_NumberVerificationAuthState value)
@@ -1309,6 +1279,7 @@ class _$AuthorizedAuthStateImpl extends _AuthorizedAuthState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialAuthState value)? initial,
+    TResult? Function(_NoTokensAuthState value)? noTokens,
     TResult? Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult? Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult? Function(_NumberVerificationAuthState value)? numberVerification,
@@ -1324,6 +1295,7 @@ class _$AuthorizedAuthStateImpl extends _AuthorizedAuthState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthState value)? initial,
+    TResult Function(_NoTokensAuthState value)? noTokens,
     TResult Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult Function(_NumberVerificationAuthState value)? numberVerification,
@@ -1342,34 +1314,23 @@ class _$AuthorizedAuthStateImpl extends _AuthorizedAuthState {
 
 abstract class _AuthorizedAuthState extends AuthState {
   const factory _AuthorizedAuthState(
-      {required final String number,
-      required final String code,
-      required final Placemark location,
+      {required final Placemark location,
       required final Position position}) = _$AuthorizedAuthStateImpl;
   const _AuthorizedAuthState._() : super._();
 
-  @override
-  String get number;
-  @override
-  String get code;
   Placemark get location;
   Position get position;
-  @override
   @JsonKey(ignore: true)
   _$$AuthorizedAuthStateImplCopyWith<_$AuthorizedAuthStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NotAuthorizedAuthStateImplCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
+abstract class _$$NotAuthorizedAuthStateImplCopyWith<$Res> {
   factory _$$NotAuthorizedAuthStateImplCopyWith(
           _$NotAuthorizedAuthStateImpl value,
           $Res Function(_$NotAuthorizedAuthStateImpl) then) =
       __$$NotAuthorizedAuthStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? number, String? code});
 }
 
 /// @nodoc
@@ -1380,113 +1341,76 @@ class __$$NotAuthorizedAuthStateImplCopyWithImpl<$Res>
       _$NotAuthorizedAuthStateImpl _value,
       $Res Function(_$NotAuthorizedAuthStateImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? number = freezed,
-    Object? code = freezed,
-  }) {
-    return _then(_$NotAuthorizedAuthStateImpl(
-      number: freezed == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$NotAuthorizedAuthStateImpl extends _NotAuthorizedAuthState {
-  const _$NotAuthorizedAuthStateImpl({required this.number, required this.code})
-      : super._();
-
-  @override
-  final String? number;
-  @override
-  final String? code;
+  const _$NotAuthorizedAuthStateImpl() : super._();
 
   @override
   String toString() {
-    return 'AuthState.notAuthorized(number: $number, code: $code)';
+    return 'AuthState.notAuthorized()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NotAuthorizedAuthStateImpl &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.code, code) || other.code == code));
+            other is _$NotAuthorizedAuthStateImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, number, code);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NotAuthorizedAuthStateImplCopyWith<_$NotAuthorizedAuthStateImpl>
-      get copyWith => __$$NotAuthorizedAuthStateImplCopyWithImpl<
-          _$NotAuthorizedAuthStateImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? number, String? code) initial,
-    required TResult Function(String number, String? code) acceptingNumber,
-    required TResult Function(String number, String? code) numberAccepted,
-    required TResult Function(String number, String code) numberVerification,
-    required TResult Function(String number, String code) numberVerified,
-    required TResult Function(
-            String number, String code, Placemark location, Position position)
-        authorized,
-    required TResult Function(String? number, String? code) notAuthorized,
-    required TResult Function(String? number, String? code, String message)
-        error,
+    required TResult Function() initial,
+    required TResult Function() noTokens,
+    required TResult Function(String number) acceptingNumber,
+    required TResult Function(String number) numberAccepted,
+    required TResult Function(String number) numberVerification,
+    required TResult Function(String number) numberVerified,
+    required TResult Function(Placemark location, Position position) authorized,
+    required TResult Function() notAuthorized,
+    required TResult Function(String? number, String message) error,
   }) {
-    return notAuthorized(number, code);
+    return notAuthorized();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? number, String? code)? initial,
-    TResult? Function(String number, String? code)? acceptingNumber,
-    TResult? Function(String number, String? code)? numberAccepted,
-    TResult? Function(String number, String code)? numberVerification,
-    TResult? Function(String number, String code)? numberVerified,
-    TResult? Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult? Function(String? number, String? code)? notAuthorized,
-    TResult? Function(String? number, String? code, String message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? noTokens,
+    TResult? Function(String number)? acceptingNumber,
+    TResult? Function(String number)? numberAccepted,
+    TResult? Function(String number)? numberVerification,
+    TResult? Function(String number)? numberVerified,
+    TResult? Function(Placemark location, Position position)? authorized,
+    TResult? Function()? notAuthorized,
+    TResult? Function(String? number, String message)? error,
   }) {
-    return notAuthorized?.call(number, code);
+    return notAuthorized?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? number, String? code)? initial,
-    TResult Function(String number, String? code)? acceptingNumber,
-    TResult Function(String number, String? code)? numberAccepted,
-    TResult Function(String number, String code)? numberVerification,
-    TResult Function(String number, String code)? numberVerified,
-    TResult Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult Function(String? number, String? code)? notAuthorized,
-    TResult Function(String? number, String? code, String message)? error,
+    TResult Function()? initial,
+    TResult Function()? noTokens,
+    TResult Function(String number)? acceptingNumber,
+    TResult Function(String number)? numberAccepted,
+    TResult Function(String number)? numberVerification,
+    TResult Function(String number)? numberVerified,
+    TResult Function(Placemark location, Position position)? authorized,
+    TResult Function()? notAuthorized,
+    TResult Function(String? number, String message)? error,
     required TResult orElse(),
   }) {
     if (notAuthorized != null) {
-      return notAuthorized(number, code);
+      return notAuthorized();
     }
     return orElse();
   }
@@ -1495,6 +1419,7 @@ class _$NotAuthorizedAuthStateImpl extends _NotAuthorizedAuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthState value) initial,
+    required TResult Function(_NoTokensAuthState value) noTokens,
     required TResult Function(_AcceptingNumberAuthState value) acceptingNumber,
     required TResult Function(_NumberAcceptedAuthState value) numberAccepted,
     required TResult Function(_NumberVerificationAuthState value)
@@ -1511,6 +1436,7 @@ class _$NotAuthorizedAuthStateImpl extends _NotAuthorizedAuthState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialAuthState value)? initial,
+    TResult? Function(_NoTokensAuthState value)? noTokens,
     TResult? Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult? Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult? Function(_NumberVerificationAuthState value)? numberVerification,
@@ -1526,6 +1452,7 @@ class _$NotAuthorizedAuthStateImpl extends _NotAuthorizedAuthState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthState value)? initial,
+    TResult Function(_NoTokensAuthState value)? noTokens,
     TResult Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult Function(_NumberVerificationAuthState value)? numberVerification,
@@ -1543,30 +1470,17 @@ class _$NotAuthorizedAuthStateImpl extends _NotAuthorizedAuthState {
 }
 
 abstract class _NotAuthorizedAuthState extends AuthState {
-  const factory _NotAuthorizedAuthState(
-      {required final String? number,
-      required final String? code}) = _$NotAuthorizedAuthStateImpl;
+  const factory _NotAuthorizedAuthState() = _$NotAuthorizedAuthStateImpl;
   const _NotAuthorizedAuthState._() : super._();
-
-  @override
-  String? get number;
-  @override
-  String? get code;
-  @override
-  @JsonKey(ignore: true)
-  _$$NotAuthorizedAuthStateImplCopyWith<_$NotAuthorizedAuthStateImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorAuthStateImplCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
+abstract class _$$ErrorAuthStateImplCopyWith<$Res> {
   factory _$$ErrorAuthStateImplCopyWith(_$ErrorAuthStateImpl value,
           $Res Function(_$ErrorAuthStateImpl) then) =
       __$$ErrorAuthStateImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({String? number, String? code, String message});
+  $Res call({String? number, String message});
 }
 
 /// @nodoc
@@ -1581,17 +1495,12 @@ class __$$ErrorAuthStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? number = freezed,
-    Object? code = freezed,
     Object? message = null,
   }) {
     return _then(_$ErrorAuthStateImpl(
       number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
-              as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
               as String?,
       message: null == message
           ? _value.message
@@ -1605,20 +1514,18 @@ class __$$ErrorAuthStateImplCopyWithImpl<$Res>
 
 class _$ErrorAuthStateImpl extends _ErrorAuthState {
   const _$ErrorAuthStateImpl(
-      {this.number, this.code, this.message = 'Неопознанная ошибка'})
+      {this.number, this.message = 'Неопознанная ошибка'})
       : super._();
 
   @override
   final String? number;
-  @override
-  final String? code;
   @override
   @JsonKey()
   final String message;
 
   @override
   String toString() {
-    return 'AuthState.error(number: $number, code: $code, message: $message)';
+    return 'AuthState.error(number: $number, message: $message)';
   }
 
   @override
@@ -1627,12 +1534,11 @@ class _$ErrorAuthStateImpl extends _ErrorAuthState {
         (other.runtimeType == runtimeType &&
             other is _$ErrorAuthStateImpl &&
             (identical(other.number, number) || other.number == number) &&
-            (identical(other.code, code) || other.code == code) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, number, code, message);
+  int get hashCode => Object.hash(runtimeType, number, message);
 
   @JsonKey(ignore: true)
   @override
@@ -1644,55 +1550,51 @@ class _$ErrorAuthStateImpl extends _ErrorAuthState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? number, String? code) initial,
-    required TResult Function(String number, String? code) acceptingNumber,
-    required TResult Function(String number, String? code) numberAccepted,
-    required TResult Function(String number, String code) numberVerification,
-    required TResult Function(String number, String code) numberVerified,
-    required TResult Function(
-            String number, String code, Placemark location, Position position)
-        authorized,
-    required TResult Function(String? number, String? code) notAuthorized,
-    required TResult Function(String? number, String? code, String message)
-        error,
+    required TResult Function() initial,
+    required TResult Function() noTokens,
+    required TResult Function(String number) acceptingNumber,
+    required TResult Function(String number) numberAccepted,
+    required TResult Function(String number) numberVerification,
+    required TResult Function(String number) numberVerified,
+    required TResult Function(Placemark location, Position position) authorized,
+    required TResult Function() notAuthorized,
+    required TResult Function(String? number, String message) error,
   }) {
-    return error(number, code, message);
+    return error(number, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? number, String? code)? initial,
-    TResult? Function(String number, String? code)? acceptingNumber,
-    TResult? Function(String number, String? code)? numberAccepted,
-    TResult? Function(String number, String code)? numberVerification,
-    TResult? Function(String number, String code)? numberVerified,
-    TResult? Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult? Function(String? number, String? code)? notAuthorized,
-    TResult? Function(String? number, String? code, String message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? noTokens,
+    TResult? Function(String number)? acceptingNumber,
+    TResult? Function(String number)? numberAccepted,
+    TResult? Function(String number)? numberVerification,
+    TResult? Function(String number)? numberVerified,
+    TResult? Function(Placemark location, Position position)? authorized,
+    TResult? Function()? notAuthorized,
+    TResult? Function(String? number, String message)? error,
   }) {
-    return error?.call(number, code, message);
+    return error?.call(number, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? number, String? code)? initial,
-    TResult Function(String number, String? code)? acceptingNumber,
-    TResult Function(String number, String? code)? numberAccepted,
-    TResult Function(String number, String code)? numberVerification,
-    TResult Function(String number, String code)? numberVerified,
-    TResult Function(
-            String number, String code, Placemark location, Position position)?
-        authorized,
-    TResult Function(String? number, String? code)? notAuthorized,
-    TResult Function(String? number, String? code, String message)? error,
+    TResult Function()? initial,
+    TResult Function()? noTokens,
+    TResult Function(String number)? acceptingNumber,
+    TResult Function(String number)? numberAccepted,
+    TResult Function(String number)? numberVerification,
+    TResult Function(String number)? numberVerified,
+    TResult Function(Placemark location, Position position)? authorized,
+    TResult Function()? notAuthorized,
+    TResult Function(String? number, String message)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(number, code, message);
+      return error(number, message);
     }
     return orElse();
   }
@@ -1701,6 +1603,7 @@ class _$ErrorAuthStateImpl extends _ErrorAuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthState value) initial,
+    required TResult Function(_NoTokensAuthState value) noTokens,
     required TResult Function(_AcceptingNumberAuthState value) acceptingNumber,
     required TResult Function(_NumberAcceptedAuthState value) numberAccepted,
     required TResult Function(_NumberVerificationAuthState value)
@@ -1717,6 +1620,7 @@ class _$ErrorAuthStateImpl extends _ErrorAuthState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialAuthState value)? initial,
+    TResult? Function(_NoTokensAuthState value)? noTokens,
     TResult? Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult? Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult? Function(_NumberVerificationAuthState value)? numberVerification,
@@ -1732,6 +1636,7 @@ class _$ErrorAuthStateImpl extends _ErrorAuthState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthState value)? initial,
+    TResult Function(_NoTokensAuthState value)? noTokens,
     TResult Function(_AcceptingNumberAuthState value)? acceptingNumber,
     TResult Function(_NumberAcceptedAuthState value)? numberAccepted,
     TResult Function(_NumberVerificationAuthState value)? numberVerification,
@@ -1749,18 +1654,12 @@ class _$ErrorAuthStateImpl extends _ErrorAuthState {
 }
 
 abstract class _ErrorAuthState extends AuthState {
-  const factory _ErrorAuthState(
-      {final String? number,
-      final String? code,
-      final String message}) = _$ErrorAuthStateImpl;
+  const factory _ErrorAuthState({final String? number, final String message}) =
+      _$ErrorAuthStateImpl;
   const _ErrorAuthState._() : super._();
 
-  @override
   String? get number;
-  @override
-  String? get code;
   String get message;
-  @override
   @JsonKey(ignore: true)
   _$$ErrorAuthStateImplCopyWith<_$ErrorAuthStateImpl> get copyWith =>
       throw _privateConstructorUsedError;

@@ -1,10 +1,12 @@
 import 'dart:developer';
 
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
+import '../../../locator_service.dart';
 import '../../logic/repositories/auth_repository.dart';
 
 part 'auth_bloc.freezed.dart';
@@ -16,39 +18,36 @@ class AuthState with _$AuthState {
   Placemark? get location =>
       mapOrNull(authorized: (authorizedState) => authorizedState.location);
 
-  const factory AuthState.initial({
-    @Default(null) final String? number,
-    @Default(null) final String? code,
-  }) = _InitialAuthState;
+  String? get number => mapOrNull(
+        acceptingNumber: (acceptingNumberState) => acceptingNumberState.number,
+        numberAccepted: (numberAcceptedState) => numberAcceptedState.number,
+        numberVerification: (numberVerificationState) =>
+            numberVerificationState.number,
+        numberVerified: (numberVerifiedState) => numberVerifiedState.number,
+      );
+
+  const factory AuthState.initial() = _InitialAuthState;
+  const factory AuthState.noTokens() = _NoTokensAuthState;
+
   const factory AuthState.acceptingNumber({
     required final String number,
-    required final String? code,
   }) = _AcceptingNumberAuthState;
   const factory AuthState.numberAccepted({
     required final String number,
-    required final String? code,
   }) = _NumberAcceptedAuthState;
   const factory AuthState.numberVerification({
     required final String number,
-    required final String code,
   }) = _NumberVerificationAuthState;
   const factory AuthState.numberVerified({
     required final String number,
-    required final String code,
   }) = _NumberVerifiedAuthState;
   const factory AuthState.authorized({
-    required final String number,
-    required final String code,
     required final Placemark location,
     required final Position position,
   }) = _AuthorizedAuthState;
-  const factory AuthState.notAuthorized({
-    required final String? number,
-    required final String? code,
-  }) = _NotAuthorizedAuthState;
+  const factory AuthState.notAuthorized() = _NotAuthorizedAuthState;
   const factory AuthState.error({
     final String? number,
-    final String? code,
     @Default('Неопознанная ошибка') final String message,
   }) = _ErrorAuthState;
 }
@@ -60,6 +59,7 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.requestCodeForRegistration({
     required final String phone,
   }) = _RequestCodeForRegistrationAuthEvent;
+
   const factory AuthEvent.requestCodeForLogin({
     required final String phone,
   }) = _RequestCodeForLoginAuthEvent;
@@ -96,7 +96,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emitter(
         AuthState.acceptingNumber(
           number: event.phone,
-          code: state.code,
         ),
       );
       await _authRepository.registerUser(
@@ -105,7 +104,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emitter(
         AuthState.numberAccepted(
           number: state.number!,
-          code: state.code,
         ),
       );
     } on Object {
@@ -124,7 +122,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emitter(
         AuthState.acceptingNumber(
           number: event.phone,
-          code: state.code,
         ),
       );
       await _authRepository.loginUser(
@@ -133,7 +130,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emitter(
         AuthState.numberAccepted(
           number: state.number!,
-          code: state.code,
         ),
       );
     } on Object {
@@ -152,12 +148,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emitter(
         AuthState.numberVerification(
           number: state.number!,
-          code: event.code,
         ),
       );
       final tokens = await _authRepository.verifyPhoneNumber(
         phone: int.parse(state.number!.replaceAll(' ', '').replaceAll('+', '')),
-        code: state.code!,
+        code: event.code,
       );
       await _authRepository.writeTokensToCache(token: tokens);
       final Position currentPosition = await _determinePosition();
@@ -165,10 +160,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         currentPosition.latitude,
         currentPosition.longitude,
       );
+      sl<Dio>().interceptors.add(
+        InterceptorsWrapper(
+          onRequest: (options, handler) {
+            options.headers.addAll(
+              {
+                'Authorization': 'Bearer ${tokens.access}',
+              },
+            );
+            return handler.next(options);
+          },
+        ),
+      );
+      await _authRepository.getUserData();
       emitter(
         AuthState.authorized(
-          number: state.number!,
-          code: state.code!,
           location: placemarks.first,
           position: currentPosition,
         ),
@@ -187,7 +193,36 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     try {
       final tokens = await _authRepository.getTokensFromCache();
-      if (tokens != null) {}
+      if (tokens != null) {
+        log(tokens.access.toString());
+
+        final Position currentPosition = await _determinePosition();
+        List<Placemark> placemarks = await placemarkFromCoordinates(
+          currentPosition.latitude,
+          currentPosition.longitude,
+        );
+        sl<Dio>().interceptors.add(
+          InterceptorsWrapper(
+            onRequest: (options, handler) {
+              options.headers.addAll(
+                {
+                  'Authorization': 'Bearer ${tokens.access}',
+                },
+              );
+              return handler.next(options);
+            },
+          ),
+        );
+        await _authRepository.getUserData();
+        emitter(
+          AuthState.authorized(
+            location: placemarks.first,
+            position: currentPosition,
+          ),
+        );
+      } else {
+        emitter(AuthState.noTokens());
+      }
     } on Object {
       emitter(AuthState.error(
         message: '',

@@ -74,11 +74,13 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) => state.mapOrNull(
-              authorized: (_) => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => HomeScreen(0),
-                ),
-              ),
+              authorized: (_) {
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(0),
+                    ),
+                    (Route<dynamic> route) => false);
+              },
               error: (_) {
                 errorController!.add(ErrorAnimationType
                     .shake); // Triggering error shake animation

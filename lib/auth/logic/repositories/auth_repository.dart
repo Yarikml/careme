@@ -20,6 +20,8 @@ abstract class IAuthRepository {
     required final TokenEntity token,
   });
   Future<TokenEntity?> getTokensFromCache();
+
+  Future<void> getUserData();
 }
 
 class AuthRepository implements IAuthRepository {
@@ -85,6 +87,15 @@ class AuthRepository implements IAuthRepository {
   }) async {
     try {
       await authLocalDatasource.writeTokensToCache(token: token);
+    } on Object {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> getUserData() async {
+    try {
+      await authRemoteDatasource.getUserData();
     } on Object {
       rethrow;
     }

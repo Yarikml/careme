@@ -1,6 +1,9 @@
 import 'package:careme24/dangerous_icons/bloc/forecast_bloc/forecast_bloc.dart';
 import 'package:careme24/dangerous_icons/logic/datasourses/dangerous_icons_remote_datasource.dart';
 import 'package:careme24/dangerous_icons/logic/repositories/dangerous_icons_repository.dart';
+import 'package:careme24/mediacl_card/bloc/medical_card_bloc/medical_card_bloc.dart';
+import 'package:careme24/mediacl_card/logic/datasources/medical_card_datasource.dart';
+import 'package:careme24/mediacl_card/logic/repositories/medical_card_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,12 +25,20 @@ Future<void> init() async {
     ..registerFactory(
       () => ForecastBloc(dangerousIconsRepository: sl()),
     )
+    ..registerFactory(
+      () => MedicalCardBloc(medicalCardRepository: sl()),
+    )
 
     //Repos
     ..registerLazySingleton<IAuthRepository>(
       () => AuthRepository(
         authLocalDatasource: sl(),
         authRemoteDatasource: sl(),
+      ),
+    )
+    ..registerLazySingleton<IMedicalCardRepository>(
+      () => MedicalCardRepository(
+        medicalCardDatasource: sl(),
       ),
     )
     ..registerLazySingleton<IDangerousIconsRepository>(
@@ -37,6 +48,9 @@ Future<void> init() async {
     )
     ..registerLazySingleton<IAuthLocalDatasource>(
       () => AuthLocalDatasource(sharedPreferences: sl()),
+    )
+    ..registerLazySingleton<IMedicalCardDatasource>(
+      () => MedicalCardDatasource(client: sl()),
     )
     ..registerLazySingleton<IAuthRemoteDatasource>(
       () => AuthRemoteDatasource(client: sl()),

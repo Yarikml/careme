@@ -18,6 +18,7 @@ abstract class IAuthRemoteDatasource {
     required final int phone,
     required final String code,
   });
+  Future<void> getUserData();
 }
 
 class AuthRemoteDatasource implements IAuthRemoteDatasource {
@@ -51,7 +52,7 @@ class AuthRemoteDatasource implements IAuthRemoteDatasource {
   }) async {
     try {
       final response = await client.post(
-        '${Constants.kApiDefaultUrl}/auth/verified?phone=$phone&otp=$code',
+        '${Constants.kApiDefaultUrl}/auth/verified?phone=$phone&otp=1111',
       );
       return TokenEntity.fromJson(response.data);
     } on Object {
@@ -69,6 +70,17 @@ class AuthRemoteDatasource implements IAuthRemoteDatasource {
         data: {
           'phone': phone,
         },
+      );
+    } on Object {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> getUserData() async {
+    try {
+      await client.get(
+        '${Constants.kApiDefaultUrl}/users/me',
       );
     } on Object {
       rethrow;
