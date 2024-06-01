@@ -22,6 +22,10 @@ abstract class IAuthRepository {
   Future<TokenEntity?> getTokensFromCache();
 
   Future<void> getUserData();
+
+  Future<void> searchUserByPhone({
+    required final int phone,
+  });
 }
 
 class AuthRepository implements IAuthRepository {
@@ -96,6 +100,17 @@ class AuthRepository implements IAuthRepository {
   Future<void> getUserData() async {
     try {
       await authRemoteDatasource.getUserData();
+    } on Object {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> searchUserByPhone({
+    required int phone,
+  }) async {
+    try {
+      await authRemoteDatasource.searchUserByPhone(phone: phone);
     } on Object {
       rethrow;
     }

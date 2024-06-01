@@ -1,3 +1,0 @@
-
-enum SwitchState { on, off }
-

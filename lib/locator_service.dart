@@ -1,3 +1,7 @@
+import 'package:careme24/auth/bloc/search_user_bloc/search_user_bloc.dart';
+import 'package:careme24/calls_page/bloc/from_me_calls_bloc/from_me_calls_bloc.dart';
+import 'package:careme24/calls_page/logic/datasources/calls_remote_datasource.dart';
+import 'package:careme24/calls_page/logic/repositories/calls_repository.dart';
 import 'package:careme24/dangerous_icons/bloc/forecast_bloc/forecast_bloc.dart';
 import 'package:careme24/dangerous_icons/logic/datasourses/dangerous_icons_remote_datasource.dart';
 import 'package:careme24/dangerous_icons/logic/repositories/dangerous_icons_repository.dart';
@@ -28,6 +32,12 @@ Future<void> init() async {
     ..registerFactory(
       () => MedicalCardBloc(medicalCardRepository: sl()),
     )
+    ..registerFactory(
+      () => FromMeCallsBloc(callsRepository: sl()),
+    )
+    ..registerFactory(
+      () => SearchUserBloc(authRepository: sl()),
+    )
 
     //Repos
     ..registerLazySingleton<IAuthRepository>(
@@ -46,6 +56,11 @@ Future<void> init() async {
         dangerousIconsRemoteDatasource: sl(),
       ),
     )
+    ..registerLazySingleton<ICallsRepository>(
+      () => CallsRepository(
+        callsRemoteDatasource: sl(),
+      ),
+    )
     ..registerLazySingleton<IAuthLocalDatasource>(
       () => AuthLocalDatasource(sharedPreferences: sl()),
     )
@@ -54,6 +69,11 @@ Future<void> init() async {
     )
     ..registerLazySingleton<IAuthRemoteDatasource>(
       () => AuthRemoteDatasource(client: sl()),
+    )
+    ..registerLazySingleton<ICallsRemoteDatasource>(
+      () => CallsRemoteDatasource(
+        client: sl(),
+      ),
     )
     ..registerLazySingleton<IDangerousIconsRemoteDatasource>(
       () => DangerousIconsRemoteDatasource(client: sl()),

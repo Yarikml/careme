@@ -6,6 +6,7 @@ import 'package:careme24/dangerous_icons/model/daily_entity/daily_entity.dart';
 import 'package:careme24/dangerous_icons/model/hourly_entity/hourly_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:intl/intl.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
@@ -96,15 +97,22 @@ class _WindPageState extends State<WindPage> {
                       height: 79,
                       width: 79,
                       margin: EdgeInsets.only(right: 16.0),
+                      padding: EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Colors.lightBlueAccent,
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xFFFFF846),
+                            Color(0xFFFFE600),
+                          ],
+                        ),
                       ),
+                      child: SvgPicture.asset('assets/images/wind.svg'),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Ветер, шквал, ураган',
+                        Text('Ветер',
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.left,
                             style: AppStyle

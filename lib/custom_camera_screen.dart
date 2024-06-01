@@ -621,10 +621,9 @@ class _CustomCameraScreenState extends State<CustomCameraScreen>
                                             }
                                           },
                                     style: TextButton.styleFrom(
-                                      primary: _isVideoCameraSelected
+                                      foregroundColor: _isVideoCameraSelected
                                           ? Colors.black54
-                                          : Colors.black,
-                                      backgroundColor:
+                                          : Colors.black, backgroundColor:
                                           _isVideoCameraSelected
                                               ? Colors.white30
                                               : Colors.white,
@@ -646,10 +645,9 @@ class _CustomCameraScreenState extends State<CustomCameraScreen>
                                       }
                                     },
                                     style: TextButton.styleFrom(
-                                      primary: _isVideoCameraSelected
+                                      foregroundColor: _isVideoCameraSelected
                                           ? Colors.black
-                                          : Colors.black54,
-                                      backgroundColor:
+                                          : Colors.black54, backgroundColor:
                                           _isVideoCameraSelected
                                               ? Colors.white
                                               : Colors.white30,

@@ -1,6 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:careme24/auth/bloc/auth_bloc/auth_bloc.dart';
+import 'package:careme24/auth/bloc/search_user_bloc/search_user_bloc.dart';
+import 'package:careme24/calls_page/bloc/search_contacts_bloc/search_contacts_bloc.dart';
 import 'package:careme24/core/ui/user_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TransmissionProfile extends StatelessWidget {
   final String name;
@@ -63,8 +67,15 @@ class TransmissionProfile extends StatelessWidget {
                 ),
                 Expanded(
                   child: TextField(
+                    onChanged: (value) {
+                      context.read<SearchUserBloc>().add(
+                            SearchUserEvent.searchUserByPhone(
+                              phone: int.parse(value),
+                            ),
+                          );
+                    },
                     decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(5, 0 , 5, 18),
+                      contentPadding: EdgeInsets.fromLTRB(5, 0, 5, 18),
                       border: InputBorder.none,
                       errorBorder: InputBorder.none,
                       enabledBorder: InputBorder.none,
@@ -77,10 +88,10 @@ class TransmissionProfile extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 12,),
+/*          SizedBox(height: 12,),
           UserWidget(),
           SizedBox(height: 12,),
-          UserWidget(),
+          UserWidget(),*/
         ],
       ),
     );

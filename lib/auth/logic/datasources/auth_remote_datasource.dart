@@ -18,7 +18,12 @@ abstract class IAuthRemoteDatasource {
     required final int phone,
     required final String code,
   });
+
   Future<void> getUserData();
+
+  Future<void> searchUserByPhone({
+    required final int phone,
+  });
 }
 
 class AuthRemoteDatasource implements IAuthRemoteDatasource {
@@ -85,5 +90,14 @@ class AuthRemoteDatasource implements IAuthRemoteDatasource {
     } on Object {
       rethrow;
     }
+  }
+
+  @override
+  Future<void> searchUserByPhone({
+    required int phone,
+  }) async {
+    await client.get(
+      '${Constants.kApiDefaultUrl}/users/users?phone=$phone',
+    );
   }
 }

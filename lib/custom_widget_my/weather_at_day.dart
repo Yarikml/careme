@@ -33,7 +33,7 @@ class WheatherAtDay extends StatelessWidget {
                     left: BorderSide(color: ColorConstant.blue600, width: 0),
                     top: BorderSide(color: ColorConstant.blue600, width: 4))
                 : null,
-            borderRadius: BorderRadius.all(Radius.circular(7)),
+            //      borderRadius: BorderRadius.all(Radius.circular(7)),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -50,25 +50,23 @@ class WheatherAtDay extends StatelessWidget {
                   style: AppStyle.txtMontserratSemiBold15Bluegray800,
                 ),
               ),
-              minTemperature != null && maxTemperature != null
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          minTemperature! + " / ",
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.left,
-                          style: AppStyle.txtMontserratRegular12Gray50001,
-                        ),
-                        Text(
-                          maxTemperature!,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.left,
-                          style: AppStyle.txtMontserratRegular12Gray50001,
-                        ),
-                      ],
-                    )
-                  : Container(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    minTemperature ?? '-' + " / ",
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.left,
+                    style: AppStyle.txtMontserratRegular12Gray50001,
+                  ),
+                  Text(
+                    maxTemperature ?? '-',
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.left,
+                    style: AppStyle.txtMontserratRegular12Gray50001,
+                  ),
+                ],
+              )
             ],
           ),
         ),

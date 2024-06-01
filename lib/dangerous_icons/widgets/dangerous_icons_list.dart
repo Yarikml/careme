@@ -5,6 +5,7 @@ import 'package:careme24/dangerous_icons/widgets/pages/temperature_page.dart';
 import 'package:careme24/dangerous_icons/widgets/pages/wind_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class DangerousIconsList extends StatelessWidget {
   const DangerousIconsList({super.key});
@@ -12,12 +13,10 @@ class DangerousIconsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ForecastBloc, ForecastState>(builder: (context, state) {
-      return SizedBox(
-        height: 130,
-        child: state.maybeMap(
-          success: (successState) => ListView(
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
+      return state.maybeMap(
+        success: (successState) => Padding(
+          padding: const EdgeInsets.only(left: 24),
+          child: Row(
             children: [
               DangerousIcon(
                 warningName: "Высокая температура",
@@ -34,6 +33,7 @@ class DangerousIconsList extends StatelessWidget {
                     ),
                   );
                 },
+                icon: SvgPicture.asset('assets/images/img_settings.svg'),
               ),
               DangerousIcon(
                 warningName: "Атмосферное давление",
@@ -50,6 +50,7 @@ class DangerousIconsList extends StatelessWidget {
                     ),
                   );
                 },
+                icon: SvgPicture.asset('assets/images/pressure.svg'),
               ),
               DangerousIcon(
                 warningName: "Ветер",
@@ -66,11 +67,12 @@ class DangerousIconsList extends StatelessWidget {
                     ),
                   );
                 },
+                icon: SvgPicture.asset('assets/images/wind.svg'),
               ),
             ],
           ),
-          orElse: () => Container(),
         ),
+        orElse: () => Container(),
       );
     });
   }

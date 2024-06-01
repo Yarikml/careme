@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:camera/camera.dart';
+import 'package:careme24/auth/bloc/search_user_bloc/search_user_bloc.dart';
+import 'package:careme24/calls_page/bloc/from_me_calls_bloc/from_me_calls_bloc.dart';
 import 'package:careme24/dangerous_icons/bloc/forecast_bloc/forecast_bloc.dart';
 import 'package:careme24/mediacl_card/bloc/medical_card_bloc/medical_card_bloc.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +48,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<MedicalCardBloc>(
           create: (context) => sl<MedicalCardBloc>(),
+        ),
+        BlocProvider<FromMeCallsBloc>(
+          create: (context) => sl<FromMeCallsBloc>(),
+        ),
+        BlocProvider<SearchUserBloc>(
+          create: (context) => sl<SearchUserBloc>(),
         ),
       ],
       child: BlocListener<AuthBloc, AuthState>(
