@@ -1,9 +1,10 @@
+/*
 import 'dart:io';
 
 import 'package:careme24/custom_page_my/report_polic_textarea.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:media_picker_widget/media_picker_widget.dart';
+//import 'package:media_picker_widget/media_picker_widget.dart';
 
 import '../core/utils/color_constant.dart';
 import '../core/utils/image_constant.dart';
@@ -395,3 +396,4 @@ class _FileCatalogPageState extends State<FileCatalogPage> {
     );
   }
 }
+*/

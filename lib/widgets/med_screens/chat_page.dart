@@ -93,10 +93,10 @@ class _ChatScreenState extends State<ChatScreen> {
                           itemCount: 3,
                           itemBuilder: (context, index) {
                             return GestureDetector(
-                              onTap: (){ Navigator.push(
+                              onTap: (){ /*Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MyAppChat()));},
+                                      builder: (context) => MyAppChat()));*/},
                                 onLongPress: (){
                                   setState(() {
                                     _isSelected=index;

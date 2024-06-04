@@ -1,10 +1,11 @@
+/*
 import 'dart:io';
 
 import 'package:careme24/custom_page_my/file_catalog_page.dart';
 import 'package:careme24/presentation/news_button_page/news_button_page.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:media_picker_widget/media_picker_widget.dart';
+//import 'package:media_picker_widget/media_picker_widget.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../core/constants/constants.dart';
@@ -419,12 +420,14 @@ class _ReportPoliceTextareaScreenState
 
                                                   child:GestureDetector(
                                                     onTap: (){ getPermissionStatus();
-                                                      /*Navigator.push(
+                                                      */
+/*Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
                                                               builder:
                                                                   (context) =>
-                                                                  FileCatalogPage()));*/
+                                                                  FileCatalogPage()));*//*
+
                                                       showModalBottomSheet(context: context,
                                                           builder: (context)
                                                           {
@@ -594,7 +597,8 @@ Navigator.pop(context);
                                                                         end: Alignment
                                                                             .topRight,
                                                                       ),
-                                                                 /*     _isFileSelect
+                                                                 */
+/*     _isFileSelect
                                                                           .isNotEmpty
                                                                           ? LinearGradient(
                                                                         colors: [
@@ -619,14 +623,17 @@ Navigator.pop(context);
                                                                             .bottomLeft,
                                                                         end: Alignment
                                                                             .topRight,
-                                                                      ),*/
+                                                                      ),*//*
+
                                                                       borderRadius:
                                                                       BorderRadius.circular(
                                                                           10)),
                                                                   child: Center(
                                                                       child: Text(
-                                                                       /* _isFileSelect
-                                                                            .isNotEmpty? "Добавить" :'Отменить',*/
+                                                                       */
+/* _isFileSelect
+                                                                            .isNotEmpty? "Добавить" :'Отменить',*//*
+
                                                                         "Добавить",
                                                                         style: AppStyle
                                                                             .txtMontserratSemiBold18WhiteA700,
@@ -1063,3 +1070,4 @@ Navigator.pop(context);
   }
 
 }
+*/

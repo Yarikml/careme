@@ -63,7 +63,7 @@ class PoliceCard extends StatelessWidget {
         if (where_call == "Юрист онлайн") {
           Navigator.push(context, MaterialPageRoute(builder: (context) => AppointmentToPoliceScreen()));
         } else  if (where_call == "Сообщить" || where_call == "Заявление") {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ReportPoliceTextareaScreen(where_call, "Полиция")));
+         // Navigator.push(context, MaterialPageRoute(builder: (context) => ReportPoliceTextareaScreen(where_call, "Полиция")));
         } else {
 
         }

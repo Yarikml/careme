@@ -4,7 +4,6 @@ import 'package:careme24/widgets/exm_voice/voice.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-
 import '../../../core/utils/color_constant.dart';
 import '../helpers/colors.dart';
 import '../helpers/style.dart';
@@ -38,10 +37,11 @@ class Bubble extends StatelessWidget {
       );
 
   Widget _bubble(BuildContext context) => voice
-      ? VoiceMessage(
+      ? /*VoiceMessage(
           audioSrc: 'https://sounds-mp3.com/mp3/0012660.mp3',
           me: index == 5 ? false : true,
-        )
+        )*/
+      Container()
       : Container(
           constraints: BoxConstraints(maxWidth: 100.w * .7),
           padding: EdgeInsets.symmetric(
@@ -50,7 +50,7 @@ class Bubble extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             border: Border.all(
-              color: me? Colors.blue : Colors.grey,
+              color: me ? Colors.blue : Colors.grey,
               width: 1,
             ),
             borderRadius: BorderRadius.only(

@@ -1,8 +1,9 @@
+/*
 import 'dart:io';
 
 import 'package:careme24/custom_camera_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:media_picker_widget/media_picker_widget.dart';
+//import 'package:media_picker_widget/media_picker_widget.dart';
 import 'package:sizer/sizer.dart';
 import 'package:social_media_recorder/audio_encoder_type.dart';
 import 'package:social_media_recorder/screen/social_media_recorder.dart';
@@ -113,7 +114,9 @@ class _ChatPageState extends State<ChatPage> {
                             Navigator.pop(context);
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(
+                                MaterialPageRoute(*/
+/**//*
+
                                     builder: (context) =>
                                         CustomCameraScreen()));
                           },
@@ -828,8 +831,10 @@ class _ChatPageState extends State<ChatPage> {
                     height: 62,
                     width: MediaQuery.of(context).size.width - 20,
                     child: Stack(
-                      /*     crossAxisAlignment: CrossAxisAlignment.center,
-                   mainAxisAlignment: MainAxisAlignment.center,*/
+                      */
+/*     crossAxisAlignment: CrossAxisAlignment.center,
+                   mainAxisAlignment: MainAxisAlignment.center,*//*
+
                       children: [
                         Padding(
                           padding: getPadding(bottom: 12, top: 10, right: 4),
@@ -1069,3 +1074,4 @@ class _ChatPageState extends State<ChatPage> {
         ),
       );
 }
+*/

@@ -8,7 +8,6 @@ import 'package:careme24/widgets/app_bar/custom_app_bar.dart';
 
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:video_player/video_player.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'core/utils/image_constant.dart';
@@ -26,7 +25,7 @@ class CustomCameraScreen extends StatefulWidget {
 class _CustomCameraScreenState extends State<CustomCameraScreen>
     with WidgetsBindingObserver {
   CameraController? controller;
-  VideoPlayerController? videoController;
+//  VideoPlayerController? videoController;
 
   File? _imageFile;
   File? _videoFile;
@@ -121,14 +120,14 @@ class _CustomCameraScreenState extends State<CustomCameraScreen>
 
   Future<void> _startVideoPlayer() async {
     if (_videoFile != null) {
-      videoController = VideoPlayerController.file(_videoFile!);
+/*      videoController = VideoPlayerController.file(_videoFile!);
       await videoController!.initialize().then((_) {
         // Ensure the first frame is shown after the video is initialized,
         // even before the play button has been pressed.
         setState(() {});
       });
       await videoController!.setLooping(true);
-      await videoController!.play();
+      await videoController!.play();*/
     }
   }
 
@@ -295,7 +294,7 @@ class _CustomCameraScreenState extends State<CustomCameraScreen>
   @override
   void dispose() {
     controller?.dispose();
-    videoController?.dispose();
+    //  videoController?.dispose();
   }
 
   @override
@@ -309,7 +308,7 @@ class _CustomCameraScreenState extends State<CustomCameraScreen>
               height: getVerticalSize(16),
               width: getHorizontalSize(11),
               svgPath: ImageConstant.imgArrowleft,
-              margin: getMargin(left: 15,right: 15, top: 15, bottom: 15),
+              margin: getMargin(left: 15, right: 15, top: 15, bottom: 15),
               onTap: () {
                 dispose();
                 Navigator.pop(context);
@@ -350,64 +349,61 @@ class _CustomCameraScreenState extends State<CustomCameraScreen>
         backgroundColor: Colors.black,
         body: _isCameraPermissionGranted
             ? _isCameraInitialized
-                ?SingleChildScrollView( child:Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height/1.5,
-                      child: CameraPreview(
-                        controller!,
-                        child: LayoutBuilder(builder:
-                            (BuildContext context,
-                                BoxConstraints constraints) {
-                          return GestureDetector(
-                            behavior: HitTestBehavior.opaque,
-                            onTapDown: (details) =>
-                                onViewFinderTap(details, constraints),
-                          );
-                        }),
+                ? SingleChildScrollView(
+                    child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height / 1.5,
+                        child: CameraPreview(
+                          controller!,
+                          child: LayoutBuilder(builder: (BuildContext context,
+                              BoxConstraints constraints) {
+                            return GestureDetector(
+                              behavior: HitTestBehavior.opaque,
+                              onTapDown: (details) =>
+                                  onViewFinderTap(details, constraints),
+                            );
+                          }),
+                        ),
                       ),
-                    ),
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
-                          children: [
-                            InkWell(
-                              onTap: _imageFile != null ||
-                                      _videoFile != null
-                                  ? () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              PreviewScreen(
-                                            imageFile: _imageFile!,
-                                            fileList: allFileList,
+                      Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                onTap: _imageFile != null || _videoFile != null
+                                    ? () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => PreviewScreen(
+                                              imageFile: _imageFile!,
+                                              fileList: allFileList,
+                                            ),
                                           ),
-                                        ),
-                                      );
-                                    }
-                                  : null,
-                              child: Container(
-                                width: 50,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius:
-                                      BorderRadius.circular(10.0),
-                                  border: Border.all(
-                                    color: Colors.white,
-                                    width: 2,
-                                  ),
-                                  image: _imageFile != null
-                                      ? DecorationImage(
-                                          image: FileImage(_imageFile!),
-                                          fit: BoxFit.cover,
-                                        )
-                                      : null,
-                                ),
-                                child: videoController != null &&
+                                        );
+                                      }
+                                    : null,
+                                child: Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                      image: _imageFile != null
+                                          ? DecorationImage(
+                                              image: FileImage(_imageFile!),
+                                              fit: BoxFit.cover,
+                                            )
+                                          : null,
+                                    ),
+                                    child:
+                                        Container() /* videoController != null &&
                                         videoController!
                                             .value.isInitialized
                                     ? ClipRRect(
@@ -420,53 +416,71 @@ class _CustomCameraScreenState extends State<CustomCameraScreen>
                                               videoController!),
                                         ),
                                       )
-                                    : Container(),
+                                    : Container(),*/
+                                    ),
                               ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                dispose();
-                                Navigator.pop(context);
-                              },
-                              child: Card(
-                                  clipBehavior: Clip.antiAlias,
-                                  elevation: 0,
-                                  margin: EdgeInsets.all(0),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadiusStyle
-                                          .roundedBorder39),
-                                  child: Container(
-                                      height: 44,
-                                      width: 44,
-                                      decoration: AppDecoration
-                                          .outlineRed90066
-                                          .copyWith(
-                                              borderRadius:
-                                                  BorderRadiusStyle
-                                                      .roundedBorder39),
-                                      child: Column(
-                                          mainAxisSize:
-                                              MainAxisSize.min,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text("SOS",
-                                                overflow: TextOverflow
-                                                    .ellipsis,
-                                                textAlign:
-                                                    TextAlign.left,
-                                                style: AppStyle
-                                                    .txtMontserratRomanBold16)
-                                          ]))),
-                            ),
-                            InkWell(
-                              onTap: _isVideoCameraSelected
-                                  ? () async {
-                                      if (_isRecordingInProgress) {
-                                        XFile? rawVideo =
-                                            await stopVideoRecording();
-                                        File videoFile =
-                                            File(rawVideo!.path);
+                              GestureDetector(
+                                onTap: () {
+                                  dispose();
+                                  Navigator.pop(context);
+                                },
+                                child: Card(
+                                    clipBehavior: Clip.antiAlias,
+                                    elevation: 0,
+                                    margin: EdgeInsets.all(0),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadiusStyle.roundedBorder39),
+                                    child: Container(
+                                        height: 44,
+                                        width: 44,
+                                        decoration: AppDecoration
+                                            .outlineRed90066
+                                            .copyWith(
+                                                borderRadius: BorderRadiusStyle
+                                                    .roundedBorder39),
+                                        child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text("SOS",
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  textAlign: TextAlign.left,
+                                                  style: AppStyle
+                                                      .txtMontserratRomanBold16)
+                                            ]))),
+                              ),
+                              InkWell(
+                                onTap: _isVideoCameraSelected
+                                    ? () async {
+                                        if (_isRecordingInProgress) {
+                                          XFile? rawVideo =
+                                              await stopVideoRecording();
+                                          File videoFile = File(rawVideo!.path);
+
+                                          int currentUnix = DateTime.now()
+                                              .millisecondsSinceEpoch;
+
+                                          final directory =
+                                              await getApplicationDocumentsDirectory();
+
+                                          String fileFormat =
+                                              videoFile.path.split('.').last;
+
+                                          _videoFile = await videoFile.copy(
+                                            '${directory.path}/$currentUnix.$fileFormat',
+                                          );
+
+                                          _startVideoPlayer();
+                                        } else {
+                                          await startVideoRecording();
+                                        }
+                                      }
+                                    : () async {
+                                        XFile? rawImage = await takePicture();
+                                        File imageFile = File(rawImage!.path);
 
                                         int currentUnix = DateTime.now()
                                             .millisecondsSinceEpoch;
@@ -474,195 +488,165 @@ class _CustomCameraScreenState extends State<CustomCameraScreen>
                                         final directory =
                                             await getApplicationDocumentsDirectory();
 
-                                        String fileFormat = videoFile
-                                            .path
-                                            .split('.')
-                                            .last;
+                                        String fileFormat =
+                                            imageFile.path.split('.').last;
 
-                                        _videoFile =
-                                            await videoFile.copy(
+                                        print(fileFormat);
+
+                                        await imageFile.copy(
                                           '${directory.path}/$currentUnix.$fileFormat',
                                         );
 
-                                        _startVideoPlayer();
-                                      } else {
-                                        await startVideoRecording();
-                                      }
-                                    }
-                                  : () async {
-                                      XFile? rawImage =
-                                          await takePicture();
-                                      File imageFile =
-                                          File(rawImage!.path);
-
-                                      int currentUnix = DateTime.now()
-                                          .millisecondsSinceEpoch;
-
-                                      final directory =
-                                          await getApplicationDocumentsDirectory();
-
-                                      String fileFormat = imageFile.path
-                                          .split('.')
-                                          .last;
-
-                                      print(fileFormat);
-
-                                      await imageFile.copy(
-                                        '${directory.path}/$currentUnix.$fileFormat',
-                                      );
-
-                                      refreshAlreadyCapturedImages();
-                                    },
-                              child: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    color: _isVideoCameraSelected
-                                        ? Colors.white
-                                        : Colors.white38,
-                                    size: 70,
-                                  ),
-                                  Icon(
-                                    Icons.circle,
-                                    color: _isVideoCameraSelected
-                                        ? Colors.red
-                                        : Colors.white,
-                                    size: 60,
-                                  ),
-                                  _isVideoCameraSelected &&
-                                          _isRecordingInProgress
-                                      ? Icon(
-                                          Icons.stop_rounded,
-                                          color: Colors.white,
-                                          size: 32,
-                                        )
-                                      : Container(),
-                                ],
-                              ),
-                            ),
-                            _isRecordingInProgress
-                                ? controller!.value.isRecordingPaused
-                                    ? Icon(
-                                        Icons.play_arrow,
-                                        color: Colors.white,
-                                        size: 30,
-                                      )
-                                    : Icon(
-                                        Icons.pause,
-                                        color: Colors.white,
-                                        size: 30,
-                                      )
-                                : Icon(
-                                    Icons.play_arrow,
-                                    color: Colors.white,
-                                    size: 30,
-                                  ),
-                            InkWell(
-                              onTap: _isRecordingInProgress
-                                  ? () async {
-                                      if (controller!
-                                          .value.isRecordingPaused) {
-                                        await resumeVideoRecording();
-                                      } else {
-                                        await pauseVideoRecording();
-                                      }
-                                    }
-                                  : () {
-                                      setState(() {
-                                        _isCameraInitialized = false;
-                                      });
-                                      onNewCameraSelected(cameras[
-                                          _isRearCameraSelected
-                                              ? 1
-                                              : 0]);
-                                      setState(() {
-                                        _isRearCameraSelected =
-                                            !_isRearCameraSelected;
-                                      });
-                                    },
-                              child: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    color: Colors.black38,
-                                    size: 60,
-                                  ),
-                                  Icon(
-                                    Icons.cached,
-                                    color: Colors.white,
-                                    size: 30,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0.0),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 4.0,
-                                    right: 2.0,
-                                  ),
-                                  child: TextButton(
-                                    onPressed: _isRecordingInProgress
-                                        ? null
-                                        : () {
-                                            if (_isVideoCameraSelected) {
-                                              setState(() {
-                                                _isVideoCameraSelected =
-                                                    false;
-                                              });
-                                            }
-                                          },
-                                    style: TextButton.styleFrom(
-                                      foregroundColor: _isVideoCameraSelected
-                                          ? Colors.black54
-                                          : Colors.black, backgroundColor:
-                                          _isVideoCameraSelected
-                                              ? Colors.white30
-                                              : Colors.white,
+                                        refreshAlreadyCapturedImages();
+                                      },
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.circle,
+                                      color: _isVideoCameraSelected
+                                          ? Colors.white
+                                          : Colors.white38,
+                                      size: 70,
                                     ),
-                                    child: Text('ФОТО'),
-                                  ),
+                                    Icon(
+                                      Icons.circle,
+                                      color: _isVideoCameraSelected
+                                          ? Colors.red
+                                          : Colors.white,
+                                      size: 60,
+                                    ),
+                                    _isVideoCameraSelected &&
+                                            _isRecordingInProgress
+                                        ? Icon(
+                                            Icons.stop_rounded,
+                                            color: Colors.white,
+                                            size: 32,
+                                          )
+                                        : Container(),
+                                  ],
                                 ),
                               ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 2.0, right: 4.0),
-                                  child: TextButton(
-                                    onPressed: () {
-                                      if (!_isVideoCameraSelected) {
-                                        setState(() {
-                                          _isVideoCameraSelected = true;
-                                        });
-                                      }
-                                    },
-                                    style: TextButton.styleFrom(
-                                      foregroundColor: _isVideoCameraSelected
-                                          ? Colors.black
-                                          : Colors.black54, backgroundColor:
-                                          _isVideoCameraSelected
-                                              ? Colors.white
-                                              : Colors.white30,
+                              _isRecordingInProgress
+                                  ? controller!.value.isRecordingPaused
+                                      ? Icon(
+                                          Icons.play_arrow,
+                                          color: Colors.white,
+                                          size: 30,
+                                        )
+                                      : Icon(
+                                          Icons.pause,
+                                          color: Colors.white,
+                                          size: 30,
+                                        )
+                                  : Icon(
+                                      Icons.play_arrow,
+                                      color: Colors.white,
+                                      size: 30,
                                     ),
-                                    child: Text('ВИДЕО'),
-                                  ),
+                              InkWell(
+                                onTap: _isRecordingInProgress
+                                    ? () async {
+                                        if (controller!
+                                            .value.isRecordingPaused) {
+                                          await resumeVideoRecording();
+                                        } else {
+                                          await pauseVideoRecording();
+                                        }
+                                      }
+                                    : () {
+                                        setState(() {
+                                          _isCameraInitialized = false;
+                                        });
+                                        onNewCameraSelected(cameras[
+                                            _isRearCameraSelected ? 1 : 0]);
+                                        setState(() {
+                                          _isRearCameraSelected =
+                                              !_isRearCameraSelected;
+                                        });
+                                      },
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.circle,
+                                      color: Colors.black38,
+                                      size: 60,
+                                    ),
+                                    Icon(
+                                      Icons.cached,
+                                      color: Colors.white,
+                                      size: 30,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
                           ),
-                        )
-                      ],
-                    ),
-                  ],
-                ))
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 4.0,
+                                      right: 2.0,
+                                    ),
+                                    child: TextButton(
+                                      onPressed: _isRecordingInProgress
+                                          ? null
+                                          : () {
+                                              if (_isVideoCameraSelected) {
+                                                setState(() {
+                                                  _isVideoCameraSelected =
+                                                      false;
+                                                });
+                                              }
+                                            },
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: _isVideoCameraSelected
+                                            ? Colors.black54
+                                            : Colors.black,
+                                        backgroundColor: _isVideoCameraSelected
+                                            ? Colors.white30
+                                            : Colors.white,
+                                      ),
+                                      child: Text('ФОТО'),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 2.0, right: 4.0),
+                                    child: TextButton(
+                                      onPressed: () {
+                                        if (!_isVideoCameraSelected) {
+                                          setState(() {
+                                            _isVideoCameraSelected = true;
+                                          });
+                                        }
+                                      },
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: _isVideoCameraSelected
+                                            ? Colors.black
+                                            : Colors.black54,
+                                        backgroundColor: _isVideoCameraSelected
+                                            ? Colors.white
+                                            : Colors.white30,
+                                      ),
+                                      child: Text('ВИДЕО'),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ))
                 : Center(
                     child: Text(
                       'LOADING',

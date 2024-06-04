@@ -74,7 +74,7 @@ class MESCard extends StatelessWidget {
                         RecordFinalScreen()));
           }
         } else  if (where_call == "Сообщить" || where_call == "Заявление") {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ReportPoliceTextareaScreen(where_call, "МЧС")));
+        //  Navigator.push(context, MaterialPageRoute(builder: (context) => ReportPoliceTextareaScreen(where_call, "МЧС")));
         } else {
 
         }
