@@ -57,7 +57,7 @@ class AuthRemoteDatasource implements IAuthRemoteDatasource {
   }) async {
     try {
       final response = await client.post(
-        '${Constants.kApiDefaultUrl}/auth/verified?phone=$phone&otp=1111',
+        '${Constants.kApiDefaultUrl}/auth/verified?phone=$phone&otp=$code',
       );
       return TokenEntity.fromJson(response.data);
     } on Object {
